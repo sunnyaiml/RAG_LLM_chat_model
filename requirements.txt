@@ -1,24 +1,10 @@
-# Flask and related packages
-Flask
-flask-cors
-werkzeug
-
-# Environment variables
-python-dotenv
-
-# Core machine learning and transformers
-torch
-transformers
-sentence-transformers
-huggingface_hub
-
-# LangChain and related community packages
-langchain
-langchain_community
-langchain_huggingface
-
-# Document processing
-PyPDF
-
-# Vector stores and FAISS
-faiss-cpu
+flask==2.1.0
+python-dotenv==0.20.0
+PyPDF2==2.10.0
+werkzeug==2.1.1
+langchain==0.0.350
+faiss-cpu==1.7.4
+huggingface_hub==0.19.4
+sentence-transformers==2.2.2
+torch==1.13.1
+transformers==4.35.2
