@@ -1,7 +1,24 @@
+# Flask and related packages
 Flask
 flask-cors
+werkzeug
+
+# Environment variables
+python-dotenv
+
+# Core machine learning and transformers
+torch
+transformers
+sentence-transformers
+huggingface_hub
+
+# LangChain and related community packages
 langchain
 langchain_community
 langchain_huggingface
-transformers
-sentence-transformers
+
+# Document processing
+PyPDF
+
+# Vector stores and FAISS
+faiss-cpu
