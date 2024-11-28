@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM MODEL</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v={{ time.time() }}">
+</head>
+<body>
+    <!-- Menu Toggle Button for Mobile -->
+    <button class="menu-toggle" aria-label="Toggle Menu">
+        <div class="menu-toggle-icon"></div>
+    </button>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div id="dropArea" class="upload-section" onclick="triggerFileUpload()">
+            Drag & Drop files here or click to upload
+        </div>
+        
+        <input type="file" id="fileInput" style="display:none;">
+        
+        <div class="train-section">
+            <button id="trainBtn">Train Model</button>
+            <div id="loadingIndicator" style="display: none;">
+                Training in progress... Please wait.
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Container -->
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>CHAT'S</h2>
+        </div>
+        
+        <div id="chatBody" class="chat-body">
+            <!-- Chat messages will be dynamically added here -->
+        </div>
+        
+        <div class="chat-footer">
+            <input type="text" id="messageInput" placeholder="Type your message...">
+            <button id="sendBtn">Send</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/chat.js') }}?v={{ time.time() }}"></script>
+</body>
+</html>
+
