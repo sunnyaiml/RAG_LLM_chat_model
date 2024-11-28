@@ -1,0 +1,128 @@
+/* General body and container styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: white;
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+}
+
+/* Question input and button styling */
+input[type="text"] {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007BFF;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Answer container styling */
+.answer-container {
+    margin-top: 1.5rem;
+    padding: 1.2rem;
+    border-radius: 15px;
+    background-color: #fef4e5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative elements for "Ask Question" */
+.question-box {
+    background-color: #e9965b;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 3px 3px 0px #b76e3f;
+    display: inline-block;
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.question-box h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.question-box::before,
+.question-box::after {
+    content: '';
+    position: absolute;
+    top: -15px;
+    width: 2px;
+    height: 30px;
+    background-color: #333;
+}
+
+.question-box::before {
+    left: 15%;
+}
+
+.question-box::after {
+    right: 15%;
+}
+
+/* Short answer and learn more link styling */
+.answer-container p {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    color: #333;
+}
+
+.learn-more {
+    display: block;
+    color: red;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.learn-more:hover {
+    text-decoration: underline;
+}
+side_bar#left {
+    display: none;
+}
+
+
+
+
+div#button {
+    margin-right: -2rem;
+    padding: 1rem;
+    background: antiquewhite;
+    height: 4rem;
+    width: 26rem;
+    display: inline-block;
+    align-content: center;
+}
