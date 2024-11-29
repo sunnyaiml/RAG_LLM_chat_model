@@ -81,17 +81,15 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             if (!response.ok) {
-                console.warn(`Training had issues: ${response.status} ${response.statusText}`);
+                throw new Error(`Training failed: ${response.status} ${response.statusText}`);
             }
 
             const data = await response.json();
             console.log("Train Response:", data);
-
-            // Handle successful response even if there's a warning
             alert(data.message || "Model trained successfully");
         } catch (error) {
             console.error("Error during training:", error);
-            alert("An error occurred while training the model, but training may still be successful.");
+            alert("An error occurred during training.");
         } finally {
             loadingIndicator.style.display = "none";
             trainButton.disabled = false;
@@ -122,22 +120,17 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             if (!response.ok) {
-                console.warn("Failed to get an answer, but will continue.");
+                throw new Error(`Failed to get an answer: ${response.status} ${response.statusText}`);
             }
 
             const data = await response.json();
             console.log("Ask Response:", data);
 
-            // Handle if there are no answers in the response
-            const answers = data.answers || ["Sorry, no answer found."];
-
-            // Display the answers in the chat body
-            answers.forEach(answer => {
-                const answerElement = document.createElement("div");
-                answerElement.className = "message received";
-                answerElement.textContent = answer;
-                chatBody.appendChild(answerElement);
-            });
+            // Display the answer in the chat body
+            const answerElement = document.createElement("div");
+            answerElement.className = "message received";
+            answerElement.textContent = data.answer || "Sorry, no answer found.";
+            chatBody.appendChild(answerElement);
 
             // Scroll to the bottom of the chat
             chatBody.scrollTop = chatBody.scrollHeight;
@@ -147,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Display an error message if something goes wrong
             const errorElement = document.createElement("div");
             errorElement.className = "message error";
-            errorElement.textContent = "Error: Unable to process your request, but you may try again.";
+            errorElement.textContent = "Error: Unable to process your request, please try again.";
             chatBody.appendChild(errorElement);
 
             // Scroll to the bottom of the chat
@@ -167,5 +160,3 @@ document.addEventListener("DOMContentLoaded", () => {
         sidebar.classList.toggle("open");
     });
 });
-
-
