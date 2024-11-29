@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-flask==2.1.0
-python-dotenv==0.20.0
-PyPDF2==2.10.0
-werkzeug==2.1.1
-langchain==0.0.350
-faiss-cpu==1.7.4
-huggingface_hub==0.19.4
-sentence-transformers==2.2.2
-torch==1.13.1
-transformers==4.35.2
-=======
 # Recommended Python version: 3.9.4
 flask
 python-dotenv==0.20.0
@@ -30,4 +18,4 @@ tiktoken
 InstructorEmbedding==1.0.1
 
 
->>>>>>> dev
+# >>>>>>> dev
