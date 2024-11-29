@@ -1,7 +1,13 @@
 {
     "version": 2,
     "builds": [
-        {"src": "main.py", "use": "@vercel/python"}
+        {
+            "src": "main.py",
+            "use": "@vercel/python",
+            "config": {
+                "buildCommand": "curl --proto 'https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && source $HOME/.cargo/env && pip install -r requirements.txt"
+            }
+        }
     ],
     "routes": [
         {"src": "/(.*)", "dest": "main.py"}
