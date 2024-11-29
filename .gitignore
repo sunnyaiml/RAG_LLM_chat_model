@@ -1,0 +1,12 @@
+Rag_env/
+pickle/
+.rag
+.env
+*.faiss
+*.pkl
+
+# Ignore all `.log` files
+*.log
+
+# Ignore a specific file
+secret.config

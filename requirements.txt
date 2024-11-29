@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 flask==2.1.0
 python-dotenv==0.20.0
 PyPDF2==2.10.0
@@ -8,3 +9,25 @@ huggingface_hub==0.19.4
 sentence-transformers==2.2.2
 torch==1.13.1
 transformers==4.35.2
+=======
+# Recommended Python version: 3.9.4
+flask
+python-dotenv==0.20.0
+pypdf
+PyPDF2==3.0.1
+werkzeug==2.1.1
+langchain-community
+langchain-core
+langchain>=0.0.184,<0.0.351
+huggingface_hub==0.19.4
+sentence-transformers==2.2.2
+flask_cors
+torch
+transformers==4.35.2
+faiss-cpu
+altair==4
+tiktoken
+InstructorEmbedding==1.0.1
+
+
+>>>>>>> dev

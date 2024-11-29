@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LLM MODEL</title>
-    <link rel="stylesheet" href="/templates/static/styles.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v={{ time.time() }}">
 </head>
 <body>
     <!-- Menu Toggle Button for Mobile -->
@@ -44,7 +45,8 @@
         </div>
     </div>
 
-    <script src="/templates/static/chat.js"></script>
+    <script src="{{ url_for('static', filename='js/chat.js') }}?v={{ time.time() }}"></script>
 </body>
 </html>
+
 
