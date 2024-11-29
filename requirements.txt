@@ -12,7 +12,9 @@ sentence-transformers==2.2.2
 flask_cors
 torch
 transformers==4.35.2
-faiss-cpu==1.7.4
+faiss-cpu==1.7.3
 altair==4
-tiktoken==0.4.0
+tiktoken==0.3.3
 InstructorEmbedding==1.0.1
+
+
