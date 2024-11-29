@@ -1,7 +1,8 @@
 import os
 import pickle
 import logging
-import re  # Make sure to import re module
+import re
+import time
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS, cross_origin
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -12,7 +13,6 @@ from langchain.chains import RetrievalQA
 from langchain.document_loaders import PyPDFLoader, TextLoader
 from langchain.llms import HuggingFacePipeline
 from langchain.prompts import PromptTemplate
-import time
 
 # Initialize Flask app and enable CORS
 app = Flask(__name__, static_folder="static", static_url_path="/static")
@@ -117,7 +117,7 @@ def create_custom_qa_chain(vector_store):
         )
         llm = HuggingFacePipeline(pipeline=hf_pipeline)
 
-        prompt_template = """Use the following context question the answer is this.
+        prompt_template = """Use the following context to answer the question.
         Context: {context}
         Question: {question}
         Helpful Answer:"""
@@ -145,12 +145,11 @@ def create_custom_qa_chain(vector_store):
 
 @app.route('/')
 def home():
-    return render_template("index.html",time=time)
+    return render_template("index.html", time=time)
 
 @app.route('/chat')
 def chat():
-    return render_template('chat.html',time=time)
-
+    return render_template('chat.html', time=time)
 
 @app.route('/upload', methods=['POST'])
 @cross_origin()
@@ -242,18 +241,16 @@ def ask_question():
         if not isinstance(response, str):
             response = str(response)
 
-        # Extract the helpful answer section
+        # Extract the helpful answer section or use the full response
         match = re.search(r'Helpful Answer:(.*)', response, re.DOTALL)
         if match:
             helpful_answer = match.group(1).strip()
         else:
-            helpful_answer = "No helpful answer found."
+            helpful_answer = response.strip()  # Use the full response if no helpful answer found
 
-        # Split into answers if multiple lines
-        answers = [ans.strip() for ans in helpful_answer.split('\n') if ans.strip()]
-
+        # Return the entire helpful answer or full response as a single response
         return jsonify({
-            "answers": answers,
+            "answer": helpful_answer,
             "original_response": response
         }), 200
     except Exception as e:
@@ -263,6 +260,6 @@ def ask_question():
             "details": repr(e)
         }), 500
 
+
 if __name__ == '__main__':
     app.run(debug=True)
-
