@@ -5,7 +5,7 @@
             "src": "main.py",
             "use": "@vercel/python",
             "config": {
-                "buildCommand": "bash build.sh"
+                "buildCommand": "bash setup.sh"
             }
         }
     ],
