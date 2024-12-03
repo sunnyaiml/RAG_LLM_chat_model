@@ -1,18 +1,31 @@
-# Use an official Python 3 image as the base image
-FROM python:3
+# Stage 1: Install dependencies
+FROM python:3.9-slim AS builder
 
-# Set the working directory inside the container to /app
+# Set working directory
 WORKDIR /app
 
-# Copy all files from the current directory on your host to the /app directory in the container
-COPY . /app
+# Copy only the requirements file to avoid unnecessary cache invalidation
+COPY requirements.txt .
 
-# Create a virtual environment in the /app directory
-RUN python3 -m venv /app/venv
+# Install dependencies in a virtual environment
+RUN python3 -m venv /venv && \
+    /venv/bin/pip install --no-cache-dir --upgrade pip && \
+    /venv/bin/pip install --no-cache-dir -r requirements.txt
 
-# Activate the virtual environment and install the required packages from requirements.txt
-RUN /app/venv/bin/pip install --upgrade pip && \
-    /app/venv/bin/pip install -r requirements.txt
+# Stage 2: Copy the app and dependencies to a smaller image
+FROM python:3.9-slim
+
+# Set working directory
+WORKDIR /app
+
+# Copy the virtual environment from the builder stage
+COPY --from=builder /venv /venv
+
+# Copy the application code
+COPY . .
+
+# Ensure the virtual environment is used
+ENV PATH="/venv/bin:$PATH"
 
 # Set the default command to run your main.py script
-CMD ["/app/venv/bin/python", "main.py"]
+CMD ["python", "main.py"]
