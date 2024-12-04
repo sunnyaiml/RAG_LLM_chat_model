@@ -4,6 +4,9 @@ pickle/
 .env
 *.faiss
 *.pkl
+*.pdf
+
+.env/
 
 # Ignore all `.log` files
 *.log

@@ -24,8 +24,11 @@ COPY --from=builder /venv /venv
 # Copy the application code
 COPY . .
 
+# Expose the port Flask uses (e.g., 5000)
+EXPOSE 5000
+
 # Ensure the virtual environment is used
 ENV PATH="/venv/bin:$PATH"
 
-# Set the default command to run your main.py script
-CMD ["python", "main.py"]
+# Set the default command to run your main.py script with gunicorn
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "main:app"]

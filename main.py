@@ -149,7 +149,8 @@ def home():
 
 @app.route('/chat')
 def chat():
-    return render_template('chat.html', time=time)
+    api_base_url = request.host_url.rstrip('/')
+    return render_template('chat.html', time=time, api_base_url=api_base_url)
 
 @app.route('/upload', methods=['POST'])
 @cross_origin()
@@ -260,7 +261,5 @@ def ask_question():
             "details": repr(e)
         }), 500
 
-
 if __name__ == '__main__':
-    app.run(debug=True)
-# >>>>>>> dev
+    app.run(host='0.0.0.0', port=5000, debug=True)
